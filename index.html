@@ -38,9 +38,9 @@
                 <h1>HTML Auth Example</h1>
             </div>
             <div class="links">
-                <a href="https://%%replace_with_bridge_host_domain%%/login" class="hostreplace">Login</a></br>
-                <a href="https://%%replace_with_bridge_host_domain%%/logout" class="hostreplace">Logout</a></br>
-                <a href="https://%%replace_with_bridge_host_domain%%/session/jwt" class="hostreplace">View Session JWT</a></br>                          
+                <a href="https://REPLACE_WITH_BRIDGE_HOST_DOMAIN/login" class="hostreplace">Login</a></br>
+                <a href="https://REPLACE_WITH_BRIDGE_HOST_DOMAIN/logout" class="hostreplace">Logout</a></br>
+                <a href="https://REPLACE_WITH_BRIDGE_HOST_DOMAIN/session/jwt" class="hostreplace">View Session JWT</a></br>                          
             </div>
             <div>
                 <button type="button" id="listBtn">
@@ -74,7 +74,7 @@ window.addEventListener("load", (event) => {
     const linkList = document.getElementsByClassName("hostreplace");
     Array.prototype.filter.call(
       linkList,
-      (link) => link.href=link.href.replace("%%replace_with_bridge_host_domain%%", authhostdomain),
+      (link) => link.href=link.href.replace("REPLACE_WITH_BRIDGE_HOST_DOMAIN", authhostdomain),
     );
 
     const addBtn = document.getElementById("addBtn");
