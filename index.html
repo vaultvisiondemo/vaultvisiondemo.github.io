@@ -74,7 +74,7 @@ window.addEventListener("load", (event) => {
     const linkList = document.getElementsByClassName("hostreplace");
     Array.prototype.filter.call(
       linkList,
-      (link) => link.href=link.href.replace("REPLACE_WITH_BRIDGE_HOST_DOMAIN", authhostdomain),
+      (link) => link.href=link.href.replace(/REPLACE_WITH_BRIDGE_HOST_DOMAIN/i, authhostdomain),
     );
 
     const addBtn = document.getElementById("addBtn");
