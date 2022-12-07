@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML Auth Example</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        input {
+            font-size: 14px;
+        }
+
+        body {
+            line-height: 1.4;
+            color: #333333;
+            font-family: Helvetica, Arial, sans-serif;
+        }
+    </style>           
+
+</head>
+
+<body>
+    <main class="main">
+        <div class="container">
+            <div class="header">
+                <h1>HTML Auth Example</h1>
+            </div>
+            <div class="links">
+                <a href="https://%%replace_with_bridge_host_domain%%/login" class="hostreplace">Login</a></br>
+                <a href="https://%%replace_with_bridge_host_domain%%/logout" class="hostreplace">Logout</a></br>
+                <a href="https://%%replace_with_bridge_host_domain%%/session/jwt" class="hostreplace">View Session JWT</a></br>                          
+            </div>
+            <div>
+                <button type="button" id="listBtn">
+                    list AirTable
+                </button>
+                <button type="button" id="addBtn">
+                    add AirTable
+                </button>
+                <button type="button" id="upBtn">
+                    Upsert AirTable
+                </button>                
+            </div>
+            <div>
+                <p id="info-text"></p>
+            </div>
+        </div>
+    </main>
+    
+    <script>
+    //TODO: REPLACE THESE WITH CORRECT VALUES FOR YOUR ENVIRONMENT
+    const authhostdomain="silly-tunic-tick.cyclic.app";
+    const baseid = "app8Bj4fSoM2Hv3s9";
+    const table = "demo_table";
+
+
+    const authhost="https://" + authhostdomain;
+    const airtablepProxyURL = authhost + '/v0/' + baseid + '/' + table;
+
+window.addEventListener("load", (event) => {
+
+    const linkList = document.getElementsByClassName("hostreplace");
+    Array.prototype.filter.call(
+      linkList,
+      (link) => link.href=link.href.replace("%%replace_with_bridge_host_domain%%", authhostdomain),
+    );
+
+    const addBtn = document.getElementById("addBtn");
+    const upBtn = document.getElementById("upBtn");
+    const listBtn = document.getElementById("listBtn");
+    const infoText = document.getElementById("info-text");
+
+    listBtn.addEventListener("click", (event) => {
+
+        fetch(airtablepProxyURL + '?filterByFormula=1%3D1', {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              credentials: 'include'
+        })
+        .then(res=>{
+            return res.json();
+        })
+        .then(res=>{
+            console.log(res);
+            infoText.innerText = JSON.stringify(res, null, 2);
+        }).catch(err=>console.log(err))
+    });
+
+    addBtn.addEventListener("click", (event) => {
+        const createSingle = JSON.stringify({
+                fields: {
+                    "Name": "John",
+                    "Start date": "August 21, 2022"
+                }
+              });
+
+        const createMultiple = JSON.stringify({
+                "records": [
+                    {
+                        fields: {
+                            "Name": "Mike",
+                            "Start date": "August 22, 2022"
+                        }
+                    },
+                    {
+                        fields: {
+                            "Name": "Roger",
+                            "Start date": "August 23, 2022"
+                        }
+                    },
+                    {
+                        fields: {
+                            "Name": "Billy",
+                            "Start date": "August 24, 2022"
+                        }
+                    }
+                ]
+              });
+
+        fetch(airtablepProxyURL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: createMultiple,
+              credentials: 'include'
+        })
+        .then(res=>{
+            return res.json();
+        })
+        .then(res=>{
+            console.log(res);
+            infoText.innerText = JSON.stringify(res, null, 2);
+        }).catch(err=>console.log(err))
+    });
+
+    upBtn.addEventListener("click", (event) => {
+        const createSingle = JSON.stringify({
+                fields: {
+                    "Name": "John",
+                    "Start date": "August 21, 2022"
+                }
+              });
+
+        const createMultiple = JSON.stringify({
+                "records": [
+                    {
+                        fields: {
+                            "Name": "Mike-noid",
+                            //"Start date": "August 2, 2022",
+                            "vv_id": "nthu"
+                        }
+                    }
+                ]
+              });
+
+        const createMultipleIds = JSON.stringify({
+                "records": [
+                    {
+                        "id": "recY8rePpDJBHuE63",
+                        fields: {
+                            "Name": "Mike2",
+                            "Start date": "August 22, 2022",
+                            "vv_id": "nthu"
+                        }
+                    },
+                    {
+                        "id": "recSSwCilaPEiJDCp",
+                        fields: {
+                            "Name": "Roger2",
+                            "Start date": "August 23, 2022"
+                        }
+                    },
+                    {
+                        "id": "recJRygG5EUNgkHXR",
+                        fields: {
+                            "Name": "Billy2",
+                        }
+                    }
+                ]
+              });
+
+        fetch(airtablepProxyURL, {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: createMultipleIds,
+              credentials: 'include'
+        })
+        .then(res=>{
+            return res.json();
+        })
+        .then(res=>{
+            console.log(res);
+            infoText.innerText = JSON.stringify(res, null, 2);
+        }).catch(err=>console.log(err))
+    });
+
+});
+
+        
+    </script>    
+</body>
+</html>
