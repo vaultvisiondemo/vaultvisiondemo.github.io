@@ -89,6 +89,7 @@ window.addEventListener("load", (event) => {
               headers: {
                 "Content-Type": "application/json"
               },
+            mode: 'cors',
               credentials: 'include'
         })
         .then(res=>{
@@ -136,6 +137,7 @@ window.addEventListener("load", (event) => {
               headers: {
                 "Content-Type": "application/json"
               },
+            mode: 'cors',
               body: createMultiple,
               credentials: 'include'
         })
@@ -199,6 +201,7 @@ window.addEventListener("load", (event) => {
               headers: {
                 "Content-Type": "application/json"
               },
+            mode: 'cors',
               body: createMultipleIds,
               credentials: 'include'
         })
