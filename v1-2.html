@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTML Auth Example</title>
+
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        font-size: 16px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    body {
+        line-height: 1.4;
+        color: #333333;
+        font-family: Helvetica, Arial, sans-serif;
+    }
+    .d-none, .d-none-until-render {
+        display: none !important;
+    }
+  </style>           
+</head>
+
+<body>
+  <main class="main">
+    <div class="container">
+      <div class="header">
+        <h1>HTML Auth Example</h1>
+      </div>
+
+      <div class="authed d-none">
+        <div>
+            <a  class="">
+                <img width="42" class="rounded-circle auth-src-user" referrerpolicy="no-referrer" data-auth-user-field="picture" data-auth-default="/1.jpg" src="/1.jpg" alt="">
+            </a>
+            <div>
+                <a class="auth-href-issuer-settings" href="#">User Settings</a>
+                <button type="button" class="auth-button-settings">User Settings</button>
+                <button type="button" class="auth-button-logout">Logout</button>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="auth-label-user" data-auth-user-field="name" data-auth-default="Name not available">
+                
+            </div>
+            <div class="auth-label-user" data-auth-user-field="email" data-auth-default="">
+                
+            </div>
+        </div>            
+      </div>
+      <div class="unauthed d-none">
+          <div class="">
+                  <button type="button" class="auth-button-login">
+                      Login
+                  </button>
+          </div>
+          <div class="">
+
+                  <button type="button" class="auth-button-signup">
+                      Create Account
+                  </button>
+          </div>
+      </div>
+
+      <div class="authed d-none">
+
+        <div class="auth-list-table" data-auth-table="wishlist" data-auth-baseid="app8Bj4fSoM2Hv3s9" data-auth-table-field="Name" data-auth-default="Not Available" data-auth-table-cache="page" data-auth-table-templatestring="Hello ${field} how &gt; you &amp; your&quot;s?" data-auth-table-ul-class="ulclass ulclass2" data-auth-table-li-class="liclass liclass2">
+            
+        </div>
+
+        <div class="auth-list-table" data-auth-table="wishlist" data-auth-baseid="app8Bj4fSoM2Hv3s9" data-auth-table-field="Start date" data-auth-default="Not Available" data-auth-table-cache="page" data-auth-table-templatestring="Hello ${field?field:'not set'} how &gt; are start dates for you &amp; your&quot;s?"></div>
+
+        <div class="auth-template-table d-none-until-render" data-auth-table="wishlist" data-auth-baseid="app8Bj4fSoM2Hv3s9" data-auth-default="Not Available" data-auth-table-cache="page" >
+          <div attrib="1st div start date" randomname="${table['Name']}">
+            ${table["Start date"]}
+            
+          </div>
+          <div attrib="2nd div Name">
+            ${table["Name"]}
+            
+          </div>          
+        </div>
+
+        <div class="auth-template-table d-none-until-render" data-auth-table="wishlist" data-auth-baseid="app8Bj4fSoM2Hv3s9" data-auth-default="Not Available" data-auth-table-cache="page" >
+          <div><strong>${table["Name"]}</strong></div>
+          <p>Welcome to the data for you</p>
+          <br>
+          <br>
+        </div>
+
+      </div>        
+    </div> 
+  </main>
+  
+<script src="https://cf.vvkey.io/bundle_v1.2.js" id="vv_js_tag" data-iss-url="https://vaultvisiondemo.github.io" data-client-id="yzaJKsCAahhy"
+    data-base-url="https://adventurous-jade-chimpanzee.cyclic.app" data-private-lite="true"></script>
+
+
+</body>
+</html>
